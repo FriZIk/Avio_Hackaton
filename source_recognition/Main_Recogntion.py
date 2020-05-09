@@ -20,8 +20,13 @@ grad = cv.addWeighted(abs_grad_x, 0.5, abs_grad_y, 0.5, 0)
 cv.imwrite('Ready_Images/Rezult_Sobel.png',grad)
 
 ret, thresh = cv.threshold(gray, 127, 255, 0)
-contours, hierarchy = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+contours, hierarchy = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_NONE)
+
 cv.drawContours(gray, contours, -1, (0,255,0), 3)
+
+# Remove noise
+
+
 
 
 for cnt in contours:
