@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/IPEditView"
+        android:layout_width="339dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="text"
+        android:textColor="@color/colorSecondaryDark"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/portEditView"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"
+        android:textColor="@color/colorSecondaryDark"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorSecondaryLight"
+        android:text="  IP"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/IPEditView"
+        app:layout_constraintEnd_toEndOf="@+id/IPEditView"
+        app:layout_constraintStart_toStartOf="@+id/IPEditView" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorSecondaryLight"
+        android:text="  PORT"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/portEditView"
+        app:layout_constraintEnd_toEndOf="@+id/portEditView"
+        app:layout_constraintStart_toStartOf="@+id/portEditView" />
+
+    <Button
+        android:id="@+id/checkButton"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@color/colorSecondary"
+        android:text="Проверка соединения"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/portEditView"
+        app:layout_constraintStart_toStartOf="@+id/IPEditView"
+        app:layout_constraintTop_toBottomOf="@+id/IPEditView" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="45dp"
+        android:background="@color/colorActiveButton"
+        android:text="Сохранить"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/saveTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:alpha="1"
+        android:text="Изменения успешно сохранены!"
+        android:textColor="@color/colorSecondaryDark"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveButton" />
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:alpha="1"
+        android:text="ОК"
+        android:textColor="@color/colorSecondaryDark"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
