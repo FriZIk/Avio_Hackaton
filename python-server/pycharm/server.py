@@ -18,6 +18,16 @@ except socket.error as e:
 print('Waitting for a Connection')
 ServerSocket.listen(5)
 
+def int_to_bytes(value, length):
+    result = []
+
+    for i in range(0, length):
+        result.append(value >> (i * 8) & 0xff)
+
+    result.reverse()
+
+    return bytes(bytearray(result))
+
 def threaded_client(connection):
     coords_reader_size = connection.recv(4)
     print(1, coords_reader_size, int.from_bytes(coords_reader_size, byteorder='big'))
@@ -35,9 +45,6 @@ def threaded_client(connection):
     print(type(image_data))
     print(len(image_data))
 
-
-
-
     f = open('./image.jpg', 'wb')
     f.write(image_data)
     f.close()
@@ -45,10 +52,7 @@ def threaded_client(connection):
     #print('send 1 byte')
     #connection.sendall(bytes([1]))
 
-    teststr = """Test text. Тестовое сообщение.
-Уважаемые участники, сегодня в 19.00 состоится минута молчания, которую мы не можем пропустить, отдавая дань памяти всем тем, кто одержал победу в ВОВ. Поэтому чек-поинт начнём в 18.30 и прервемся в 18.55 на минуту молчания. Продолжим с 19.15. Ваши кураторы подготовят таймслоты, согласно этому перерыву
-And I am really happy. I am still an undergraduat
-End. Конец."""
+    teststr = "Отправка сообщнеия клиенту с сервера.                               "
 
     print('send len of msg', len(teststr).to_bytes(4, byteorder='big'), len(teststr))
     connection.sendall(len(teststr).to_bytes(4, byteorder='big'))
@@ -64,16 +68,19 @@ End. Конец."""
     #asyncio.get_event_loop().run_until_complete(cadastral.getScreenOfCadastralMapByCoords_BetaVersion())
     #loop = asyncio.get_event_loop()
     #cororun(cadastral.getScreenOfCadastralMapByCoords_BetaVersion())
+    print('Получение кадастрового участка с карты росеестра.')
     img = cadastral.getScreenOfCadastralMapByCoords_BetaVersion(url='https://pkk.rosreestr.ru/#/search/{},{}/{}'.format(str(y), str(x), str(17)))
     #img.save('testtesttest.png')
     #loop.close()
     #asyncio.get_event_loop().run_until_complete()
+    print('координаты участка')
     print(x, y)
     #image = cadastral.scaleScreen('i-want-to-die.png')
     #image = cadastral.scaleScreen(img)
     image = img
-    image.save('testtesttest.png')
 
+    image = cadastral.scaleScreen(image)
+    image.save('testtesttest.png')
     imgByteArr = io.BytesIO()
     image.save(imgByteArr, format='PNG')
     imgByteArr = imgByteArr.getvalue()
@@ -81,10 +88,14 @@ End. Конец."""
     #import struct
     #struct.pack('>i', len(imgByteArr))
 
-    print('!!!!!!!!!! send len of image', str(len(imgByteArr)).encode('utf-8'), len(imgByteArr))
-    connection.sendall(str(len(imgByteArr)).encode('utf-8'))
+    #print('!!!!!!!!!! send len of image', len(imgByteArr).to_bytes(4, byteorder='big'), len(imgByteArr))
+    #connection.sendall(len(imgByteArr).to_bytes(4, byteorder='big'))
+
+    print('!!!!!!!!!! send len of image', len(imgByteArr).to_bytes(4, byteorder='big'), len(imgByteArr))
+    connection.sendall(len(imgByteArr).to_bytes(4, byteorder='big'))
     print('!!!!!!!!!! send image')
     connection.sendall(imgByteArr)
+
 
     print('Connection closed')
     connection.close()

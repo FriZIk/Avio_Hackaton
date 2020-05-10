@@ -64,10 +64,10 @@ class Cadastral:
         #display.start()
         # take screenshot
         chrome_options = webdriver.ChromeOptions()
-        chrome_options.headless = False
-        chrome_options.set_headless(False)
-        chrome_options.add_argument("--headless")
-        chrome_options.add_argument('headless')
+        chrome_options.headless = True
+        #chrome_options.set_headless(False)
+        #chrome_options.add_argument("--headless")
+        #chrome_options.add_argument('headless')
         chrome_options.add_argument('--disable-extensions')
         chrome_options.add_argument('--profile-directory=Default')
         chrome_options.add_argument("--incognito")

@@ -63,16 +63,25 @@ public class Main {
             inputStream.read(strBytes);
             String s = new String(strBytes);
             System.out.println(s);
-
-            inputStream.read(fourBytes);
-            length = ByteBuffer.wrap(fourBytes).getInt();
-            byte[] imgBytes = new byte[length];
-            inputStream.read(imgBytes);
-            File file = new File("IMAGE.png");
-            if (!file.exists()) file.createNewFile();
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-            fileOutputStream.write(imgBytes);
-            fileOutputStream.close();
+	     
+	    //byte[] fourBytes2 = new byte[40];
+            //inputStream.read(fourBytes2);
+            //length = inputStream.readInt();
+	    //ByteBuffer bb = ByteBuffer.wrap(fourBytes2);
+//	    length = bb.getInt();
+	  //  for(byte b:fourBytes2) {
+	//	char c = (char)b;
+	//	System.out.print(b);
+		//System.out.format("%d\n", (int)c);
+	    //}
+	    //System.out.format("output %d\n", length);
+            //byte[] imgBytes = new byte[length];
+            //inputStream.read(imgBytes);
+            //File file = new File("IMAGE.png");
+            //if (!file.exists()) file.createNewFile();
+            //FileOutputStream fileOutputStream = new FileOutputStream(file);
+            //fileOutputStream.write(imgBytes);
+            //fileOutputStream.close();
             outputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
