@@ -1,0 +1,2 @@
+Low thresh:100
+High thresh:300
